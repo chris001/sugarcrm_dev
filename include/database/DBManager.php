@@ -306,17 +306,17 @@ abstract class DBManager
 	public function checkError($msg = '', $dieOnError = false)
 	{
 		if (empty($this->database)) {
-			$this->registerError("$msg: Database Is Not Connected", $dieOnError);
+			$this->registerError($msg, "Database Is Not Connected", $dieOnError);
 			return true;
 		}
 
 		$dberror = $this->lastDbError();
 		if($dberror === false) {
-    		$this->last_error = false;
-	    	return false;
+			$this->last_error = false;
+			return false;
 		}
 		$this->registerError($msg, $dberror, $dieOnError);
-        return true;
+		return true;
 	}
 
 	/**
